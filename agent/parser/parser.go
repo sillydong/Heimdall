@@ -58,6 +58,7 @@ func (p *Parser) Run() {
 }
 
 func (p *Parser) Parse(req *http.Request) {
+	shard := time.Now().Nanosecond() % p.option.Shard
 	wrapreq := &WrapRequest{
 		Request: req,
 		Start:   time.Now().UnixNano(),
@@ -65,7 +66,7 @@ func (p *Parser) Parse(req *http.Request) {
 		Match:   false,
 		RuleID:  "",
 	}
-	p.requestChannels[1] <- wrapreq
+	p.requestChannels[shard] <- wrapreq
 }
 
 func (p *Parser) parseWorker(shard int) {
