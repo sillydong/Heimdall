@@ -1,0 +1,5 @@
+model:
+  host: 127.0.0.1:27017
+  db: heimdall
+storer:
+  listen: 127.0.0.1:9999

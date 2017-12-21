@@ -1,0 +1,8 @@
+transfer:
+  host: 127.0.0.1:9999
+mirror:
+  listen: 127.0.0.:9998
+parse:
+  shard: 2
+  buffer: 10
+
